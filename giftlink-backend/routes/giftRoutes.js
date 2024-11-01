@@ -9,7 +9,7 @@ router.get('/', async (req, res, next) => {
     try {
         // Get the database connection
         const db = await connectToDatabase();
-        // retrieve the gift collection
+        // Retrieve the gift collection
         const collection = db.collection("gifts");
         // Fetch all gifts
         const gifts = await collection.find({}).toArray();
