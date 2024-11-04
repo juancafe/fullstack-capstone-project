@@ -4,10 +4,12 @@ const axios = require('axios');
 const logger = require('./logger');
 const expressPino = require('express-pino-logger')({ logger });
 // Task 1: import the natural library
-const natural = {{insert code here}}
+//const natural = {{insert code here}}
+const natural = require("natural");
 
 // Task 2: initialize the express server
-{{insert code here}}
+//{{insert code here}}
+const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.json());
@@ -15,7 +17,8 @@ app.use(expressPino);
 
 // Define the sentiment analysis route
 // Task 3: create the POST /sentiment analysis
-app.{{insert method here}}('{{insert route here}}', async (req, res) => {
+//app.{{insert method here}}('{{insert route here}}', async (req, res) => {
+app.{{PUT}}('{{/sentiment}}', async (req, res) => {
 
     // Task 4: extract the sentence parameter
     const { sentence } = {{insert code here}};
