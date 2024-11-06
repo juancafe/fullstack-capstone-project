@@ -38,7 +38,7 @@ function DetailsPage() {
         fetchGift();
 
 		// Task 3: Scroll to top on component mount
-		{{ insert code here }}
+		//{{ insert code here }}
         window.scrollTo(0, 0)
 
     }, [productId]);
@@ -103,19 +103,19 @@ return (
                 gift.Category
 			</p>
                     	<p><strong>Condition:</strong> 
-				{/* insert code here  */}
+				//{/* insert code here  */}
                 gift.Condition
                     	</p>
                     	<p><strong>Date Added:</strong> 
-				{/* insert code here  */}
+				//{/* insert code here  */}
                 gift.Date
                         </p>
                     	<p><strong>Age (Years):</strong> 
-				{/* insert code here  */}
+				//{/* insert code here  */}
                 gift.Age
                     	</p>
                     	<p><strong>Description:</strong> 
-				{/* insert code here  */}
+				//{/* insert code here  */}
                 gift.Description
                     	</p>
                 </div>
