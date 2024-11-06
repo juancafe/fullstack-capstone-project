@@ -100,23 +100,23 @@ return (
                     // Task 6: Display gift details
                     	<p><strong>Category:</strong> 
 				//* insert code here  */
-                gift.Category
+                gift.category
 			</p>
                     	<p><strong>Condition:</strong> 
 				//{/* insert code here  */}
-                gift.Condition
+                gift.condition
                     	</p>
                     	<p><strong>Date Added:</strong> 
 				//{/* insert code here  */}
-                gift.Date
+                gift.dateAdded
                         </p>
                     	<p><strong>Age (Years):</strong> 
 				//{/* insert code here  */}
-                gift.Age
+                gift.age
                     	</p>
                     	<p><strong>Description:</strong> 
 				//{/* insert code here  */}
-                gift.Description
+                gift.description
                     	</p>
                 </div>
             </div>
