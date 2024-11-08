@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-//Step 1 - Task 1
+//Step 1 - Task 1 Import urlConfig from `giftlink-frontend/src/config.js`
 import {urlConfig} from '../../config';
-
-//Step 1 - Task 2
+//Step 1 - Task 2 mport useAppContext `giftlink-frontend/context/AuthContext.js`
 import { useAppContext } from '../../context/AuthContext';
-
-//Step 1 - Task 3
+//Step 1 - Task 3 Import useNavigate from `react-router-dom` to handle navigation after successful registration.
 import { useNavigate } from 'react-router-dom';
 
 import './RegisterPage.css';
