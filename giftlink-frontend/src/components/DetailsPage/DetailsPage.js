@@ -14,7 +14,7 @@ function DetailsPage() {
         if (!authenticationToken) {
 			// Task 1: Check for authentication and redirect
             //{{insert code here}}
-            navigate('/app/login')
+            navigate('/app/login');
         }
 
         // get the gift to be rendered on the details page
