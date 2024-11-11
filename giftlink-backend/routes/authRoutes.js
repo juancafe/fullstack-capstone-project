@@ -58,39 +58,39 @@ router.post('/register', async (req, res) => {
     }
 });
 
-    //Login Endpoint
+//Login Endpoint
 router.post('/login', async (req, res) => {
     console.log("\n\n Inside login")
 
     try {
         // const collection = await connectToDatabase();
-        const db = await connectToDatabase();
-        const collection = db.collection("users");
+        const db = await connectToDatabase(); // Task 1: Connect to `giftsdb` in MongoDB through `connectToDatabase` in `db.js`.
+        const collection = db.collection("users");  // Task 2: Access MongoDB `users` collection
         const theUser = await collection.findOne({ email: req.body.email });
-
-        if (theUser) {
+        // Task 3: Check for user credentials in database
+        if (theUser) {  // Task 4: Check if the password matches the encrypyted password and send appropriate message on mismatch
             let result = await bcryptjs.compare(req.body.password, theUser.password)
             if(!result) {
                 logger.error('Passwords do not match');
                 return res.status(404).json({ error: 'Wrong pasword' });
             }
-            let payload = {
+            let payload = { // Task 6: Create JWT authentication if passwords match with user._id as payload
                 user: {
                     id: theUser._id.toString(),
                 },
             };
-
+            // Task 5: Fetch user details from database
             const userName = theUser.firstName;
             const userEmail = theUser.email;
 
             const authtoken = jwt.sign(payload, JWT_SECRET);
             logger.info('User logged in successfully');
             return res.status(200).json({ authtoken, userName, userEmail });
-        } else {
+        } else {   // Task 7: Send appropriate message if user not found
             logger.error('User not found');
             return res.status(404).json({ error: 'User not found' });
         }
-    } catch (e) {
+    } catch (e) { 
         logger.error(e);
         return res.status(500).json({ error: 'Internal server error', details: e.message });
       }
