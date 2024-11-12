@@ -97,12 +97,11 @@ router.put('/update', async (req, res) => {
 
     const errors = validationResult(req);
 
-    // Task 3: Check if `email` is present in the header and throw an appropriate error message if not present.
-    if (!errors.isEmpty()) {
+     if (!errors.isEmpty()) {
         logger.error('Validation errors in update request', errors.array());
         return res.status(400).json({ errors: errors.array() });
     }
-
+   // Task 3: Check if `email` is present in the header and throw an appropriate error message if not present.
     try {
         const email = req.headers.email;
 
