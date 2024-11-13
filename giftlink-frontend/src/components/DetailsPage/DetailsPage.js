@@ -49,8 +49,6 @@ function DetailsPage() {
 
 
     const handleBackClick = () => {
-		// Task 4: Handle back click
-		//{{ insert code here }}
         navigate(-1)
 	};
 
@@ -101,25 +99,24 @@ return (
                             <div className="no-image-available-large">No Image Available</div>
                         )}
                     </div>
-                    // Task 6: Display gift details
                     	<p><strong>Category:</strong> 
-				//* insert code here  */
+                        {gift.category}
                 gift.category
 			</p>
                     	<p><strong>Condition:</strong> 
-				//{/* insert code here  */}
+                        {gift.condition}
                 gift.condition
                     	</p>
                     	<p><strong>Date Added:</strong> 
-				//{/* insert code here  */}
+	                {gift.dateAdded}
                 gift.dateAdded
                         </p>
                     	<p><strong>Age (Years):</strong> 
-				//{/* insert code here  */}
+	                {gift.age}
                 gift.age
                     	</p>
                     	<p><strong>Description:</strong> 
-				//{/* insert code here  */}
+                        {gift.description}
                 gift.description
                     	</p>
                 </div>
