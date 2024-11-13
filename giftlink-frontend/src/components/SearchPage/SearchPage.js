@@ -5,11 +5,11 @@ import {urlConfig} from '../../config';
 
 function SearchPage() {
     //Task 1: Define state variables for the search query, age range, and search results.
-    const categories = ['Living', 'Bedroom', 'Bathroom', 'Kitchen', 'Office'];
-    const conditions = ['New', 'Like New', 'Older'];
     const [searchQuery, setSearchQuery] = useState('');
     const [ageRange, setAgeRange] = useState(6); // Initialize with minimum value
     const [searchResults, setSearchResults] = useState([]);
+    const categories = ['Living', 'Bedroom', 'Bathroom', 'Kitchen', 'Office'];
+    const conditions = ['New', 'Like New', 'Older'];
 
     useEffect(() => {
         // fetch all products
@@ -34,14 +34,6 @@ function SearchPage() {
 
 
 // Task 2. Fetch search results from the API based on user inputs.
-
-const navigate = useNavigate();
-const goToDetailsPage = (productId) => {
-    navigate(`/app/product/${productId}`);
-};
-
-// Task 6. Enable navigation to the details page of a selected gift.
-navigate(`/app/product/${productId}`);
 const handleSearch = async () => {
     // Construct the search URL based on user input
     const baseUrl = `${urlConfig.backendUrl}/api/search?`;
@@ -64,7 +56,11 @@ const handleSearch = async () => {
     }
 };
  
-
+// Task 6. Enable navigation to the details page of a selected gift.
+const navigate = useNavigate();
+const goToDetailsPage = (productId) => {
+    navigate(`/app/product/${productId}`);
+};
 
     return (
         <div className="container mt-5">
@@ -147,3 +143,4 @@ const handleSearch = async () => {
 }
 
 export default SearchPage;
+
