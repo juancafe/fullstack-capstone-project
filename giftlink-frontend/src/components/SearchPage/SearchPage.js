@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {urlConfig} from '../../config';
 
 function SearchPage() {
-    //Task 1: Define state variables for the search query, age range, and search results.
     const [searchQuery, setSearchQuery] = useState('');
     const [ageRange, setAgeRange] = useState(6); // Initialize with minimum value
     const [searchResults, setSearchResults] = useState([]);
@@ -12,7 +11,6 @@ function SearchPage() {
     const conditions = ['New', 'Like New', 'Older'];
 
     useEffect(() => {
-        // fetch all products
         const fetchProducts = async () => {
             try {
                 let url = `${urlConfig.backendUrl}/api/gifts`
@@ -32,10 +30,7 @@ function SearchPage() {
         fetchProducts();
     }, []);
 
-
-// Task 2. Fetch search results from the API based on user inputs.
 const handleSearch = async () => {
-    // Construct the search URL based on user input
     const baseUrl = `${urlConfig.backendUrl}/api/search?`;
     const queryParams = new URLSearchParams({
         name: searchQuery,
@@ -56,7 +51,6 @@ const handleSearch = async () => {
     }
 };
  
-// Task 6. Enable navigation to the details page of a selected gift.
 const navigate = useNavigate();
 const goToDetailsPage = (productId) => {
     navigate(`/app/product/${productId}`);
@@ -69,8 +63,6 @@ const goToDetailsPage = (productId) => {
                     <div className="filter-section mb-3 p-3 border rounded">
                         <h5>Filters</h5>
                         <div className="d-flex flex-column">
-                            //{/* Task 3: Dynamically generate category and condition dropdown options.*/}
-                            //{/* Category Dropdown */}
                             <label htmlFor="categorySelect">Category</label>
                             <select id="categorySelect" className="form-control my-1">
                                 <option value="">All</option>
@@ -79,7 +71,6 @@ const goToDetailsPage = (productId) => {
                                 ))}
                             </select>
 
-                            {/* Condition Dropdown */}
                             <label htmlFor="conditionSelect">Condition</label>
                             <select id="conditionSelect" className="form-control my-1">
                                 <option value="">All</option>
@@ -87,8 +78,6 @@ const goToDetailsPage = (productId) => {
                                 <option key={condition} value={condition}>{condition}</option>
                                 ))}
                             </select>   
-                            // {/* Task 4: Implement an age range slider and display the selected value. */}
-                            //{/* Age Range Slider */}
                             <label htmlFor="ageRange">Less than {ageRange} years</label>
                             <input
                                 type="range"
@@ -102,7 +91,6 @@ const goToDetailsPage = (productId) => {
                         </div>
                    
                     </div>
-                    // {/* Task 7: Add text input field for search criteria*/}
                     <input
                         type="text"
                         className="form-control mb-2"
@@ -110,14 +98,11 @@ const goToDetailsPage = (productId) => {
                         value={searchQuery}
                         onChange={e => setSearchQuery(e.target.value)}
                     />
-                    //{/* Task 8: Implement search button with onClick event to trigger search:*/}
                     <button className="btn btn-primary" onClick={handleSearch}>Search</button>
-                    //{/*Task 5: Display search results and handle empty results with a message. */}
                     <div className="search-results mt-4">
                             {searchResults.length > 0 ? (
                             searchResults.map(product => (
                             <div key={product.id} className="card mb-3">
-                                {/* Check if product has an image and display it */}
                                 <img src={product.image} alt={product.name} className="card-img-top" />
                                 <div className="card-body">
                                     <h5 className="card-title">{product.name}</h5>
