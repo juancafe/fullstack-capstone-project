@@ -9,11 +9,9 @@ function LoginPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState(''); 
     const [incorrect, setIncorrect] = useState(''); //Task 4: Include a state for incorrect password.
-    //Task 5: Create a local variable for `navigate`,`bearerToken`   and `setIsLoggedIn`.
     const navigate = useNavigate();
     const bearerToken = sessionStorage.getItem('bearer-token');
     const { setIsLoggedIn } = useAppContext();
-    //Task 6. If the bearerToken has a value (user already logged in), navigate to MainPage
     useEffect(() => {
         if (sessionStorage.getItem('auth-token')) {
         navigate('/app')
@@ -24,21 +22,18 @@ function LoginPage() {
         e.preventDefault();
         //api call
         const res = await fetch(`${urlConfig.backendUrl}/api/auth/login`, {
-            //Step 1 - Task 7
             method: 'POST',
             //Step 1 - Task 8
           headers: {
             'content-type': 'application/json',
             'Authorization': bearerToken ? `Bearer ${bearerToken}` : '', // Include Bearer token if available
           },
-        //Step 1 - Task 9
           body: JSON.stringify({
             email: email,
             password: password,
           })
         });
 
-        //Step 2: Task 1
         const json = await res.json();
         console.log('Json',json);
         if (json.authtoken) {
@@ -48,10 +43,8 @@ function LoginPage() {
           sessionStorage.setItem('email', json.userEmail);
             //Step 2: Task 3
           setIsLoggedIn(true);
-            //Step 2: Task 4
           navigate('/app');
         } else {
-            //Step 2: Task 5
           document.getElementById("email").value="";
           document.getElementById("password").value="";
           setIncorrect("Wrong password. Try again.");
@@ -88,8 +81,6 @@ function LoginPage() {
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                             />                            
-                            
-                            //*Step 2: Task 6 Display an error message to the user.
                             <span style={{color:'red',height:'.5cm',display:'block',fontStyle:'italic',fontSize:'12px'}}>{incorrect}</span>
                         </div>
                         {/* Include appropriate error message if login is incorrect*/}
