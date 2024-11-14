@@ -5,21 +5,21 @@ import {urlConfig} from '../../config';
 import { useAppContext } from '../../context/AuthContext';
 
 const Profile = () => {
-const [userDetails, setUserDetails] = useState({});
-const [updatedDetails, setUpdatedDetails] = useState({});
-const {setUserName} = useAppContext();
-const [changed, setChanged] = useState("");
-
-const [editMode, setEditMode] = useState(false);
-const navigate = useNavigate();
-  
-useEffect(() => {
-  const authtoken = sessionStorage.getItem("auth-token");
-  if (!authtoken) {
-    navigate("/app/login");
-  } else {
-    fetchUserProfile();
-  }
+      const [userDetails, setUserDetails] = useState({});
+      const [updatedDetails, setUpdatedDetails] = useState({});
+      const {setUserName} = useAppContext();
+      const [changed, setChanged] = useState("");
+      
+      const [editMode, setEditMode] = useState(false);
+      const navigate = useNavigate();
+        
+      useEffect(() => {
+        const authtoken = sessionStorage.getItem("auth-token");
+        if (!authtoken) {
+          navigate("/app/login");
+        } else {
+          fetchUserProfile();
+        }
 }, [navigate]);
 
 const fetchUserProfile = async () => {
