@@ -1,4 +1,3 @@
-/*jshint esversion: 8 */
 import React from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import MainPage from './components/MainPage/MainPage';
